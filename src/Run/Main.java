@@ -14,6 +14,8 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(Main.class.getResource("/Scene/MainScreen/mainScreen.fxml"));
         primaryStage.setTitle("Speed Up");
         primaryStage.setScene(new Scene(root));
+        primaryStage.setMinHeight(583);
+        primaryStage.setMinWidth(962);
         primaryStage.show();
     }
 

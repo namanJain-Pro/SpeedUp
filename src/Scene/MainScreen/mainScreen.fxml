@@ -1,39 +1,104 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane alignment="center" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Scene.MainScreen.MainController">
+<StackPane alignment="center" minHeight="583.0" minWidth="962.0" prefHeight="583.0" prefWidth="962.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Scene.MainScreen.MainController">
    <children>
-      <AnchorPane prefHeight="200.0" prefWidth="700.0">
+      <AnchorPane minHeight="583.0" minWidth="962.0" prefHeight="200.0" prefWidth="700.0">
          <children>
-            <AnchorPane layoutX="250.0" prefHeight="500.0" prefWidth="650.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-            <AnchorPane prefHeight="500.0" prefWidth="227.0" style="-fx-background-color: #d4edff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane layoutX="250.0" prefHeight="500.0" prefWidth="650.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Button layoutX="-3.0" layoutY="66.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="255.0" style="-fx-background-color: transparent;" text="Practice">
+                  <AnchorPane fx:id="practice_anchorPane" prefHeight="500.0" prefWidth="650.0" style="-fx-background-color: yellow;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Label layoutX="305.0" layoutY="14.0" prefHeight="62.0" prefWidth="161.0" text="Practice" underline="true" AnchorPane.leftAnchor="305.0" AnchorPane.rightAnchor="246.0" AnchorPane.topAnchor="14.0">
+                           <font>
+                              <Font name="System Bold" size="42.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="219.0" layoutY="177.0" maxHeight="32.0" maxWidth="150.0" minHeight="32.0" minWidth="150.0" prefHeight="32.0" prefWidth="150.0" text="&gt; Difficulty" AnchorPane.leftAnchor="219.0" AnchorPane.rightAnchor="281.0" AnchorPane.topAnchor="177.0">
+                           <font>
+                              <Font name="System Bold" size="22.0" />
+                           </font>
+                        </Label>
+                        <ChoiceBox layoutX="251.0" layoutY="222.0" maxHeight="50.0" maxWidth="300.0" minHeight="25.0" minWidth="150.0" prefHeight="25.0" prefWidth="288.0" AnchorPane.leftAnchor="251.0" AnchorPane.topAnchor="222.0" />
+                        <Label layoutX="219.0" layoutY="292.0" prefHeight="32.0" prefWidth="213.0" text="&gt; Paragraph Length" AnchorPane.leftAnchor="219.0" AnchorPane.rightAnchor="218.0" AnchorPane.topAnchor="292.0">
+                           <font>
+                              <Font name="System Bold" size="22.0" />
+                           </font>
+                        </Label>
+                        <Slider accessibleText="Words'" blockIncrement="30.0" layoutX="251.0" layoutY="340.0" majorTickUnit="30.0" max="90.0" maxHeight="34.0" maxWidth="450.0" min="30.0" minHeight="34.0" minWidth="360.0" minorTickCount="0" prefHeight="34.0" prefWidth="427.0" showTickLabels="true" snapToTicks="true" AnchorPane.leftAnchor="251.0" AnchorPane.topAnchor="340.0" />
+                        <Button layoutX="297.0" layoutY="362.0" maxHeight="50.0" maxWidth="195.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="88.0" style="-fx-background-color: #03a5fc;" text="Start" AnchorPane.bottomAnchor="104.0" AnchorPane.leftAnchor="297.0">
+                           <font>
+                              <Font size="20" />
+                           </font>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="500.0" prefWidth="650.0" style="-fx-background-color: yellow;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <AnchorPane prefHeight="500.0" prefWidth="650.0" style="-fx-background-color: yellow;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <AnchorPane fx:id="test_anchorPane" minHeight="500.0" minWidth="650.0" prefHeight="500.0" prefWidth="650.0" style="-fx-background-color: yellow;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Label layoutX="312.0" layoutY="14.0" prefHeight="50.0" prefWidth="88.0" text="Test" underline="true" AnchorPane.leftAnchor="312.0" AnchorPane.rightAnchor="312.0" AnchorPane.topAnchor="14.0">
+                           <font>
+                              <Font name="System Bold" size="42.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="187.0" layoutY="128.0" maxHeight="32.0" maxWidth="150.0" minHeight="32.0" minWidth="147.0" prefHeight="32.0" prefWidth="147.0" text="&gt; Difficulty" AnchorPane.leftAnchor="187.0" AnchorPane.rightAnchor="378.0" AnchorPane.topAnchor="128.0">
+                           <font>
+                              <Font name="System Bold" size="22.0" />
+                           </font>
+                        </Label>
+                        <ChoiceBox layoutX="212.0" layoutY="171.0" maxHeight="50.0" maxWidth="300.0" minHeight="25.0" minWidth="150.0" prefHeight="25.0" prefWidth="288.0" AnchorPane.leftAnchor="212.0" AnchorPane.topAnchor="171.0" />
+                        <Label layoutX="187.0" layoutY="239.0" prefHeight="32.0" prefWidth="213.0" text="&gt; Paragraph Length" AnchorPane.leftAnchor="187.0" AnchorPane.rightAnchor="312.0" AnchorPane.topAnchor="239.0">
+                           <font>
+                              <Font name="System Bold" size="22.0" />
+                           </font>
+                        </Label>
+                        <Slider accessibleText="Words'" blockIncrement="30.0" layoutX="213.0" layoutY="282.0" majorTickUnit="30.0" max="90.0" maxHeight="34.0" maxWidth="450.0" min="30.0" minHeight="34.0" minWidth="360.0" minorTickCount="0" prefHeight="34.0" prefWidth="427.0" showTickLabels="true" snapToTicks="true" AnchorPane.leftAnchor="213.0" AnchorPane.topAnchor="282.0" />
+                        <Label layoutX="187.0" layoutY="356.0" text="&gt; Time Period" AnchorPane.leftAnchor="187.0" AnchorPane.rightAnchor="312.0" AnchorPane.topAnchor="356.0">
+                           <font>
+                              <Font name="System Bold" size="22.0" />
+                           </font>
+                        </Label>
+                        <ChoiceBox layoutX="219.0" layoutY="399.0" prefWidth="150.0" AnchorPane.leftAnchor="219.0" AnchorPane.topAnchor="399.0" />
+                        <Button layoutX="312.0" layoutY="463.0" maxHeight="50.0" maxWidth="195.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="88.0" style="-fx-background-color: #03a5fc;" text="Start" AnchorPane.bottomAnchor="86.0" AnchorPane.leftAnchor="312.0">
+                           <font>
+                              <Font size="20" />
+                           </font>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+               </children></AnchorPane>
+            <AnchorPane minHeight="500.0" minWidth="250.0" prefHeight="500.0" prefWidth="250.0" style="-fx-background-color: #282b36;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Button fx:id="practice_button" layoutX="-3.0" layoutY="66.0" minHeight="61.0" minWidth="255.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="255.0" style="-fx-background-color: transparent; -fx-border-color: #038f8f; -fx-border-width: 0px 0px 2px 0px;" text="Practice" textFill="WHITE">
                      <font>
                         <Font size="27.0" />
                      </font>
                   </Button>
-                  <Button layoutX="-3.0" layoutY="127.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="255.0" style="-fx-background-color: transparent;" text="Test">
+                  <Button fx:id="test_button" layoutX="-3.0" layoutY="127.0" minHeight="61.0" minWidth="255.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="255.0" style="-fx-background-color: transparent; -fx-border-color: #038f8f; -fx-border-width: 0px 0px 2px 0px;" text="Test" textFill="WHITE">
                      <font>
                         <Font size="27.0" />
                      </font>
                   </Button>
-                  <Button layoutX="-3.0" layoutY="188.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="255.0" style="-fx-background-color: transparent;" text="Statistic">
+                  <Button fx:id="statistic_button" layoutX="-3.0" layoutY="188.0" minHeight="61.0" minWidth="255.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="255.0" style="-fx-background-color: transparent; -fx-border-color: #038f8f; -fx-border-width: 0px 0px 2px 0px;" text="Statistic" textFill="WHITE">
                      <font>
                         <Font size="27.0" />
                      </font>
                   </Button>
-                  <Button layoutX="-3.0" layoutY="249.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="255.0" style="-fx-background-color: transparent;" text="Profile">
+                  <Button fx:id="profile_button" layoutX="-3.0" layoutY="249.0" minHeight="61.0" minWidth="255.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="255.0" style="-fx-background-color: transparent; -fx-border-color: #038f8f; -fx-border-width: 0px 0px 2px 0px;" text="Profile" textFill="WHITE">
                      <font>
                         <Font size="27.0" />
                      </font>
                   </Button>
-                  <AnchorPane prefHeight="501.0" prefWidth="43.0" style="-fx-background-color: white; -fx-opacity: .8;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <AnchorPane prefHeight="501.0" prefWidth="43.0" style="-fx-background-color: #2e3030; -fx-opacity: 0.7;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
                </children>
                <effect>
                   <DropShadow />
