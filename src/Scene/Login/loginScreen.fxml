@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+
+<StackPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="Scene.Login.LoginScreenController"
+           alignment="center" prefHeight="583.0" prefWidth="962.0">
+
+</StackPane>
