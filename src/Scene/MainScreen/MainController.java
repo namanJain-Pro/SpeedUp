@@ -14,7 +14,7 @@ public class MainController {
     private Button practice_button,test_button,statistic_button,profile_button;
 
     @FXML
-    public void handleButtonPressed(ActionEvent e){
+    public void handleScreenSwap(ActionEvent e){
         if(e.getSource().equals(practice_button)){
             practice_anchorPane.toFront();
         }else if(e.getSource().equals(test_button)){

@@ -11,11 +11,11 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(Main.class.getResource("/Scene/MainScreen/mainScreen.fxml"));
+        Parent root = FXMLLoader.load(Main.class.getResource("/Scene/Login/loginScreen.fxml"));
         primaryStage.setTitle("Speed Up");
         primaryStage.setScene(new Scene(root));
-        primaryStage.setMinHeight(583);
-        primaryStage.setMinWidth(962);
+        primaryStage.setMinHeight(844);
+        primaryStage.setMinWidth(1189);
         primaryStage.show();
     }
 
