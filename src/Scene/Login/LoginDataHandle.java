@@ -11,39 +11,6 @@ public class LoginDataHandle {
     private static final HashMap<String, User> accountsWithKeyUsername = new HashMap<>();
     private static final HashMap<String, User> accountsWithKeyEmail = new HashMap<>();
 
-    private static class User implements Serializable{
-
-        private final long serialVersionUID = 1L;
-
-        private final String name;
-        private final String email;
-        private final String password;
-        private final String dateOfBirth;
-
-        public User(String name, String email, String password, String dateOfBirth) {
-            this.name = name;
-            this.email = email;
-            this.password = password;
-            this.dateOfBirth = dateOfBirth;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public String getEmail() {
-            return email;
-        }
-
-        public String getPassword() {
-            return password;
-        }
-
-        public String getDateOfBirth() {
-            return dateOfBirth;
-        }
-    }
-
     public boolean verificationWithUsername(String userName, String password){
         if(accountsWithKeyUsername.containsKey(userName)){
             User user = accountsWithKeyUsername.get(userName);
@@ -86,6 +53,28 @@ public class LoginDataHandle {
         accountsWithKeyUsername.put(user.getName(), user);
 
         return 0;
+    }
+
+    public void trackOfUserUsername(String username){
+        User user = accountsWithKeyUsername.get(username);
+        Path filePath = FileSystems.getDefault().getPath("src/DataFiles/currentUserDetails.dat");
+        try(ObjectOutputStream outputStream = new ObjectOutputStream(new BufferedOutputStream(Files.newOutputStream(filePath)))) {
+            outputStream.writeObject(new User("Admin","nj065063@gmail.com","namanJain","2001-12-17"));
+            outputStream.writeObject(user);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void trackOfUserEmail(String email){
+        User user = accountsWithKeyUsername.get(email);
+        Path filePath = FileSystems.getDefault().getPath("src/DataFiles/currentUserDetails.dat");
+        try(ObjectOutputStream outputStream = new ObjectOutputStream(new BufferedOutputStream(Files.newOutputStream(filePath)))) {
+            outputStream.writeObject(new User("Admin","nj065063@gmail.com","namanJain","2001-12-17"));
+            outputStream.writeObject(user);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     static {

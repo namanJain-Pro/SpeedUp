@@ -7,4 +7,5 @@ module Speed.Up.Mini.Project.With.Planning {
     opens Run;
     opens Scene.MainScreen;
     opens Scene.Login;
+    opens Scene;
 }

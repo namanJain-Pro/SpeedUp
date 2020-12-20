@@ -1,13 +1,19 @@
 package Scene.Login;
 
+import Run.Main;
+import Scene.ControlledScreen;
+import Scene.ScreenController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 
+import java.net.URL;
 import java.time.format.DateTimeFormatter;
+import java.util.ResourceBundle;
 
-public class LoginScreenController {
+public class LoginScreenController implements ControlledScreen, Initializable {
 
     @FXML
     private AnchorPane signIn_anchorPane,signUp_anchorPane;
@@ -50,9 +56,15 @@ public class LoginScreenController {
     LoginDataHandle loginDataHandle = new LoginDataHandle();
     //*******************************
 
+    ScreenController myController;
+
+    @Override
+    public void setScreenParent(ScreenController screenController) {
+        myController = screenController;
+    }
+
     @FXML
     public void initialize(){
-        uncorrectLabel.setOpacity(0);
         login_button.setDisable(true);
         signUp_button.setDisable(true);
     }
@@ -76,16 +88,18 @@ public class LoginScreenController {
             if(emailCheck(input)){
                 boolean verification = loginDataHandle.verificationWithEmail(input,password);
                 if(verification){
-                    System.out.println("Successful Login");
+                    loginDataHandle.trackOfUserEmail(input);
+                    myController.setScreen(Main.mainScreenId);
                 }else{
-                    uncorrectLabel.setOpacity(1);
+                    uncorrectLabel.setText("Username/Password dosen't match, try with correct one");
                 }
             }else{
                 boolean verification = loginDataHandle.verificationWithUsername(input,password);
                 if(verification){
-                    System.out.println("Successful Login");
+                    loginDataHandle.trackOfUserUsername(input);
+                    myController.setScreen(Main.mainScreenId);
                 }else{
-                    uncorrectLabel.setOpacity(1);
+                    uncorrectLabel.setText("Username/Password dosen't match, try with correct one");
                 }
             }
         }
@@ -140,5 +154,10 @@ public class LoginScreenController {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
     }
 }
