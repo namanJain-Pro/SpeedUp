@@ -8,11 +8,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import Scene.*;
 
-import java.io.*;
-import java.nio.file.FileSystems;
-import java.nio.file.Files;
-import java.nio.file.Path;
-
 
 public class Main extends Application {
 
@@ -27,27 +22,12 @@ public class Main extends Application {
         mainController.loadScreen(loginScreenId,loginScreen);
         mainController.loadScreen(mainScreenId,mainScreen);
 
-
-        Path filePath = FileSystems.getDefault().getPath("src/DataFiles/currentUserDetails.dat");
-        try(ObjectInputStream inputStream = new ObjectInputStream(new BufferedInputStream(Files.newInputStream(filePath)))){
-            try {
-                inputStream.readObject();
-                User user = (User) inputStream.readObject();
-                mainController.setScreen(mainScreenId);
-            }catch (EOFException e){
-                mainController.setScreen(loginScreenId);
-            }
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-
-
+        mainController.setScreen(loginScreenId);
         Group root = new Group();
         root.getChildren().addAll(mainController);
         primaryStage.setTitle("Speed Up");
-        primaryStage.setScene(new Scene(root));
-        primaryStage.setMinHeight(844);
-        primaryStage.setMinWidth(1189);
+        primaryStage.setScene(new Scene(root,1500,950));
+        primaryStage.setResizable(false);
         primaryStage.show();
     }
 

@@ -55,28 +55,6 @@ public class LoginDataHandle {
         return 0;
     }
 
-    public void trackOfUserUsername(String username){
-        User user = accountsWithKeyUsername.get(username);
-        Path filePath = FileSystems.getDefault().getPath("src/DataFiles/currentUserDetails.dat");
-        try(ObjectOutputStream outputStream = new ObjectOutputStream(new BufferedOutputStream(Files.newOutputStream(filePath)))) {
-            outputStream.writeObject(new User("Admin","nj065063@gmail.com","namanJain","2001-12-17"));
-            outputStream.writeObject(user);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void trackOfUserEmail(String email){
-        User user = accountsWithKeyUsername.get(email);
-        Path filePath = FileSystems.getDefault().getPath("src/DataFiles/currentUserDetails.dat");
-        try(ObjectOutputStream outputStream = new ObjectOutputStream(new BufferedOutputStream(Files.newOutputStream(filePath)))) {
-            outputStream.writeObject(new User("Admin","nj065063@gmail.com","namanJain","2001-12-17"));
-            outputStream.writeObject(user);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     static {
         Path filePath = FileSystems.getDefault().getPath("src/DataFiles/userAccount.dat");
 

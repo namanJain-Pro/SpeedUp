@@ -10,11 +10,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<StackPane alignment="center" prefHeight="844.0" prefWidth="1189.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Scene.Login.LoginScreenController">
+<StackPane alignment="center" prefHeight="950.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Scene.Login.LoginScreenController">
    <children>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+      <AnchorPane prefHeight="950.0" prefWidth="1500.0">
          <children>
-            <AnchorPane prefHeight="844.0" prefWidth="700.0" style="-fx-background-color: #020887;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane prefHeight="950.0" prefWidth="950.0" style="-fx-background-color: #020887;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <Label layoutX="180.0" layoutY="115.0" prefHeight="186.0" prefWidth="340.0" text="Welcome to Speed Up" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                      <font>
@@ -27,9 +27,9 @@
                      </font>
                   </Label>
                </children></AnchorPane>
-            <AnchorPane layoutX="700.0" prefHeight="844.0" prefWidth="489.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane layoutX="700.0" prefHeight="950.0" prefWidth="550.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <AnchorPane fx:id="signIn_anchorPane" prefHeight="844.0" prefWidth="489.0" style="-fx-background-color: #334195;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <AnchorPane fx:id="signIn_anchorPane" prefHeight="950.0" prefWidth="550.0" style="-fx-background-color: #334195;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <AnchorPane layoutX="80.0" layoutY="172.0" prefHeight="557.0" prefWidth="330.0" style="-fx-background-color: #647aa3; -fx-opacity: 0.7; -fx-background-radius: 20px 20px 20px 20px;" AnchorPane.bottomAnchor="115.0" AnchorPane.rightAnchor="79.0" AnchorPane.topAnchor="172.0">
                            <children>
@@ -82,7 +82,7 @@
                         </Label>
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="signUp_anchorPane" prefHeight="844.0" prefWidth="489.0" style="-fx-background-color: #334195;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <AnchorPane fx:id="signUp_anchorPane" prefHeight="950.0" prefWidth="550.0" style="-fx-background-color: #334195;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <AnchorPane layoutX="57.0" layoutY="143.0" prefHeight="678.0" prefWidth="375.0" style="-fx-background-color: #647aa3; -fx-opacity: 0.6; -fx-background-radius: 20px 20px 20px 20px;" AnchorPane.rightAnchor="57.0" AnchorPane.topAnchor="143.0">
                            <children>
