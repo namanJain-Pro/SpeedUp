@@ -55,6 +55,30 @@ public class LoginDataHandle {
         return 0;
     }
 
+    public void userTrackWithUsername(String userName){
+
+        User user = accountsWithKeyUsername.get(userName);
+
+        Path filePath = FileSystems.getDefault().getPath("src/DataFiles/currentUser.dat");
+        try(ObjectOutputStream outputStream = new ObjectOutputStream(new BufferedOutputStream(Files.newOutputStream(filePath)))) {
+            outputStream.writeObject(user);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void userTrackWithEmail(String email){
+
+        User user = accountsWithKeyUsername.get(email);
+
+        Path filePath = FileSystems.getDefault().getPath("src/DataFiles/currentUser.dat");
+        try(ObjectOutputStream outputStream = new ObjectOutputStream(new BufferedOutputStream(Files.newOutputStream(filePath)))) {
+            outputStream.writeObject(user);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     static {
         Path filePath = FileSystems.getDefault().getPath("src/DataFiles/userAccount.dat");
 
