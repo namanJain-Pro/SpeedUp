@@ -89,6 +89,9 @@ public class LoginScreenController implements ControlledScreen, Initializable {
                 boolean verification = loginDataHandle.verificationWithEmail(input,password);
                 if(verification){
                     loginDataHandle.userTrackWithEmail(input);
+                    Main.loadMainScreen();
+                    Main.loadPracticeScreen();
+                    Main.loadTestScreen();
                     myController.setScreen(Main.mainScreenId);
                 }else{
                     uncorrectLabel.setText("Username/Password dosen't match, try with correct one");
@@ -97,6 +100,7 @@ public class LoginScreenController implements ControlledScreen, Initializable {
                 boolean verification = loginDataHandle.verificationWithUsername(input,password);
                 if(verification){
                     loginDataHandle.userTrackWithUsername(input);
+                    Main.loadMainScreen();
                     myController.setScreen(Main.mainScreenId);
                 }else{
                     uncorrectLabel.setText("Username/Password dosen't match, try with correct one");

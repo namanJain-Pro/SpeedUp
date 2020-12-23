@@ -23,18 +23,27 @@ public class Main extends Application {
     public static String loginScreenId = "LoginScreen";
     public static String mainScreen = "/Scene/MainScreen/mainScreen.fxml";
     public static String mainScreenId = "MainScreen";
+    public static String practiceScreenId = "PracticeScreen";
+    public static String practiceScreen = "/Scene/PracticeScreen/practiceScreen.fxml";
+    public static String testScreenId = "TestScreen";
+    public static String testScreen = "/Scene/TestScreen/testScreen.fxml";
+
+
+    private static final ScreenController mainController = new ScreenController();
+
 
     @Override
     public void start(Stage primaryStage) {
-        ScreenController mainController = new ScreenController();
-        mainController.loadScreen(loginScreenId,loginScreen);
-        mainController.loadScreen(mainScreenId,mainScreen);
 
         Path filePath = FileSystems.getDefault().getPath("src/DataFiles/currentUser.dat");
         try(ObjectInputStream inputStream = new ObjectInputStream(new BufferedInputStream(Files.newInputStream(filePath)))){
             inputStream.readObject();
+            loadMainScreen();
+            loadPracticeScreen();
+            loadTestScreen();
             mainController.setScreen(mainScreenId);
         } catch (IOException | ClassNotFoundException e) {
+            loadLoginScreen();
             mainController.setScreen(loginScreenId);
         }
 
@@ -49,5 +58,21 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         launch(args);
+    }
+
+    public static void loadMainScreen(){
+        mainController.loadScreen(mainScreenId,mainScreen);
+    }
+
+    public static void loadLoginScreen(){
+        mainController.loadScreen(loginScreenId,loginScreen);
+    }
+
+    public static void loadPracticeScreen(){
+        mainController.loadScreen(practiceScreenId,practiceScreen);
+    }
+
+    public static void loadTestScreen(){
+        mainController.loadScreen(testScreenId,testScreen);
     }
 }

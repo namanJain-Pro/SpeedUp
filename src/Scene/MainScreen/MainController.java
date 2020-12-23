@@ -1,5 +1,6 @@
 package Scene.MainScreen;
 
+import Run.Main;
 import Scene.ControlledScreen;
 import Scene.Login.User;
 import Scene.ScreenController;
@@ -9,6 +10,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.BufferedInputStream;
+import java.io.EOFException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.nio.file.FileSystems;
@@ -43,6 +45,11 @@ public class MainController implements ControlledScreen {
     @FXML
     private Button saveButton_profile,resetButton_profile,logoutButton_profile;
     //*********************************************************************************
+
+    //Practice Tab Variables
+    @FXML
+    private Button startButton_practice;
+
 
     @FXML
     public void initialize(){
@@ -90,16 +97,39 @@ public class MainController implements ControlledScreen {
     }
 
     private void populatingProfileTabFields(){
-        Path filePath = FileSystems.getDefault().getPath("src/DataFiles/currentUser.dat");
-        try(ObjectInputStream inputStream = new ObjectInputStream(new BufferedInputStream(Files.newInputStream(filePath)))){
-            User user = (User) inputStream.readObject();
+        User user = getUser();
+        if(user != null) {
             nameField_profile.setText(user.getName());
             emailField_profile.setText(user.getEmail());
 
             LocalDate localDate = LocalDate.parse(user.getDateOfBirth(), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
             dobField_profile.setValue(localDate);
+        }
+    }
+
+    @FXML
+    public void handlePracticeMode(){
+        myController.setScreen(Main.practiceScreenId);
+    }
+
+    @FXML
+    public void handleTestMode(){
+        myController.setScreen(Main.testScreenId);
+    }
+
+    private User getUser(){
+        User user = null;
+
+        Path filePath = FileSystems.getDefault().getPath("src/DataFiles/currentUser.dat");
+        try(ObjectInputStream inputStream = new ObjectInputStream(new BufferedInputStream(Files.newInputStream(filePath)))){
+            try{
+                user = (User) inputStream.readObject();
+            }catch(EOFException ignored){
+            }
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
+
+        return user;
     }
 }
