@@ -5,7 +5,7 @@ public class Constant {
     public static final String DB_NAME = "info.db";
     public static final String CONNECTION_STRING = "jdbc:sqlite:C:\\Users\\WorkModeON\\IdeaProjects\\Speed Up Mini Project With Planning\\src\\DataFiles\\"+DB_NAME;
 
-    public static final String TABLE_USER = "user";
+    public static final String TABLE_USER = "users";
     public static final String COLUMN_USER_ID = "_id";
     public static final String COLUMN_USER_NAME = "name";
     public static final String COLUMN_USER_EMAIL = "email";
@@ -14,11 +14,11 @@ public class Constant {
     public static final String COLUMN_USER_PRACTICE = "practice";
     public static final String COLUMN_USER_TEST = "test";
 
-    public static final String TABLE_PRACTICE_RECORD = "practiceRecord";
+    public static final String TABLE_PRACTICE_RECORD = "practiceRecords";
     public static final String COLUMN_PRACTICE_RECORD_ID = "_id";
     public static final String COLUMN_PRACTICE_RECORD_RECORD = "record";
 
-    public static final String TABLE_TEST_RECORD = "testRecord";
+    public static final String TABLE_TEST_RECORD = "testRecords";
     public static final String COLUMN_TEST_RECORD_ID = "_id";
     public static final String COLUMN_TEST_RECORD_RECORD = "record";
 
