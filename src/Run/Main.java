@@ -1,21 +1,12 @@
 package Run;
 
-import Scene.Login.LoginDataHandle;
-import Scene.Login.User;
+import DataModel.DataSource;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import Scene.*;
-
-import java.io.BufferedInputStream;
-import java.io.EOFException;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.nio.file.FileSystems;
-import java.nio.file.Files;
-import java.nio.file.Path;
-
 
 public class Main extends Application {
 
@@ -34,18 +25,12 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) {
+        mainController.loadScreen(loginScreenId,loginScreen);
+        mainController.loadScreen(mainScreenId,mainScreen);
+        mainController.loadScreen(practiceScreenId,practiceScreen);
+        mainController.loadScreen(testScreenId,testScreen);
 
-        Path filePath = FileSystems.getDefault().getPath("src/DataFiles/currentUser.dat");
-        try(ObjectInputStream inputStream = new ObjectInputStream(new BufferedInputStream(Files.newInputStream(filePath)))){
-            inputStream.readObject();
-            loadMainScreen();
-            loadPracticeScreen();
-            loadTestScreen();
-            mainController.setScreen(mainScreenId);
-        } catch (IOException | ClassNotFoundException e) {
-            loadLoginScreen();
-            mainController.setScreen(loginScreenId);
-        }
+        mainController.setScreen(loginScreenId);
 
         Group root = new Group();
         root.getChildren().addAll(mainController);
@@ -60,19 +45,18 @@ public class Main extends Application {
         launch(args);
     }
 
-    public static void loadMainScreen(){
-        mainController.loadScreen(mainScreenId,mainScreen);
+    @Override
+    public void init() throws Exception {
+        super.init();
+        if(!DataSource.getInstance().open()){
+            Platform.exit();
+        }
+        DataSource.getInstance().create();
     }
 
-    public static void loadLoginScreen(){
-        mainController.loadScreen(loginScreenId,loginScreen);
-    }
-
-    public static void loadPracticeScreen(){
-        mainController.loadScreen(practiceScreenId,practiceScreen);
-    }
-
-    public static void loadTestScreen(){
-        mainController.loadScreen(testScreenId,testScreen);
+    @Override
+    public void stop() throws Exception {
+        super.stop();
+        DataSource.getInstance().close();
     }
 }

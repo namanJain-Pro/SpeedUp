@@ -2,7 +2,7 @@ package Scene.MainScreen;
 
 import Run.Main;
 import Scene.ControlledScreen;
-import Scene.Login.User;
+import DataModel.User;
 import Scene.ScreenController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -119,16 +119,6 @@ public class MainController implements ControlledScreen {
 
     private User getUser(){
         User user = null;
-
-        Path filePath = FileSystems.getDefault().getPath("src/DataFiles/currentUser.dat");
-        try(ObjectInputStream inputStream = new ObjectInputStream(new BufferedInputStream(Files.newInputStream(filePath)))){
-            try{
-                user = (User) inputStream.readObject();
-            }catch(EOFException ignored){
-            }
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
 
         return user;
     }
