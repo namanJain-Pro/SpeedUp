@@ -25,12 +25,16 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        mainController.loadScreen(loginScreenId,loginScreen);
-        mainController.loadScreen(mainScreenId,mainScreen);
-        mainController.loadScreen(practiceScreenId,practiceScreen);
-        mainController.loadScreen(testScreenId,testScreen);
 
-        mainController.setScreen(loginScreenId);
+        if(DataSource.getInstance().checkUserLoginStatus()){
+            mainController.loadScreen(mainScreenId, mainScreen);
+            mainController.loadScreen(practiceScreenId,practiceScreen);
+            mainController.loadScreen(testScreenId,testScreen);
+            mainController.setScreen(mainScreenId);
+        } else{
+            mainController.loadScreen(loginScreenId,loginScreen);
+            mainController.setScreen(loginScreenId);
+        }
 
         Group root = new Group();
         root.getChildren().addAll(mainController);

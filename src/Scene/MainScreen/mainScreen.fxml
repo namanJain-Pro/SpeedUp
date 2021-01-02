@@ -124,7 +124,7 @@
                               <Font name="System Bold" size="22.0" />
                            </font>
                         </PasswordField>
-                        <Button fx:id="logoutButton_profile" layoutX="236.0" layoutY="862.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="108.0" style="-fx-background-color: black; -fx-opacity: 0.8;" text="Logout" textFill="WHITE">
+                        <Button fx:id="logoutButton_profile" onAction="#handleLogout" layoutX="236.0" layoutY="862.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="108.0" style="-fx-background-color: black; -fx-opacity: 0.8;" text="Logout" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>

@@ -7,8 +7,6 @@ public class User {
     private String email;
     private String password;
     private String dateOfBirth;
-    private int practiceRecord;
-    private int testRecord;
 
     public int getId() {
         return id;
@@ -50,20 +48,5 @@ public class User {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public int getPracticeRecord() {
-        return practiceRecord;
-    }
-
-    public void setPracticeRecord(int practiceRecord) {
-        this.practiceRecord = practiceRecord;
-    }
-
-    public int getTestRecord() {
-        return testRecord;
-    }
-
-    public void setTestRecord(int testRecord) {
-        this.testRecord = testRecord;
-    }
 }
 

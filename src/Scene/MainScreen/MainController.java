@@ -1,5 +1,6 @@
 package Scene.MainScreen;
 
+import DataModel.DataSource;
 import Run.Main;
 import Scene.ControlledScreen;
 import DataModel.User;
@@ -117,9 +118,13 @@ public class MainController implements ControlledScreen {
         myController.setScreen(Main.testScreenId);
     }
 
-    private User getUser(){
-        User user = null;
+    @FXML
+    public void handleLogout(){
+        DataSource.getInstance().changeLoginStatusTo0();
+        myController.setScreen(Main.loginScreenId);
+    }
 
-        return user;
+    private User getUser(){
+        return DataSource.getInstance().getCurrentUser();
     }
 }
