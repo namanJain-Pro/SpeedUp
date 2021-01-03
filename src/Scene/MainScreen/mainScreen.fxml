@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.Integer?>
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ChoiceBox?>
@@ -19,32 +22,6 @@
          <children>
             <AnchorPane layoutX="250.0" prefHeight="500.0" prefWidth="650.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <AnchorPane fx:id="practice_anchorPane" layoutX="67.0" prefHeight="1000.0" prefWidth="1183.0" style="-fx-background-color: #D0F4DE;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <children>
-                        <Label layoutX="509.0" layoutY="14.0" prefHeight="62.0" prefWidth="171.0" text="Practice" underline="true" AnchorPane.leftAnchor="509.0" AnchorPane.rightAnchor="570.0" AnchorPane.topAnchor="14.0">
-                           <font>
-                              <Font name="System Bold" size="42.0" />
-                           </font>
-                        </Label>
-                        <Label layoutX="351.0" layoutY="184.0" maxHeight="58.0" maxWidth="219.0" minHeight="32.0" minWidth="135.0" prefHeight="58.0" prefWidth="219.0" text="&gt; Difficulty" AnchorPane.leftAnchor="351.0" AnchorPane.rightAnchor="680.0" AnchorPane.topAnchor="184.0">
-                           <font>
-                              <Font name="System Bold" size="32.0" />
-                           </font>
-                        </Label>
-                        <ChoiceBox layoutX="393.0" layoutY="263.0" maxHeight="50.0" maxWidth="300.0" minHeight="25.0" minWidth="150.0" prefHeight="42.0" prefWidth="299.0" AnchorPane.leftAnchor="393.0" AnchorPane.topAnchor="263.0" />
-                        <Label layoutX="352.0" layoutY="363.0" prefHeight="47.0" prefWidth="315.0" text="&gt; Paragraph Length" AnchorPane.leftAnchor="352.0" AnchorPane.rightAnchor="583.0" AnchorPane.topAnchor="363.0">
-                           <font>
-                              <Font name="System Bold" size="32.0" />
-                           </font>
-                        </Label>
-                        <Slider accessibleText="Words'" blockIncrement="30.0" layoutX="393.0" layoutY="432.0" majorTickUnit="30.0" max="90.0" maxHeight="34.0" maxWidth="450.0" min="30.0" minHeight="34.0" minWidth="360.0" minorTickCount="0" prefHeight="34.0" prefWidth="427.0" showTickLabels="true" snapToTicks="true" AnchorPane.leftAnchor="393.0" AnchorPane.topAnchor="432.0" />
-                        <Button fx:id="startButton_practice" layoutX="537.0" layoutY="825.0" maxHeight="58.0" maxWidth="195.0" mnemonicParsing="false" onAction="#handlePracticeMode" prefHeight="58.0" prefWidth="116.0" style="-fx-background-color: #03a5fc;" text="Start" AnchorPane.bottomAnchor="117.0" AnchorPane.leftAnchor="537.0">
-                           <font>
-                              <Font size="20" />
-                           </font>
-                        </Button>
-                     </children>
-                  </AnchorPane>
                   <AnchorPane fx:id="statistic_anchorPane" prefHeight="500.0" prefWidth="650.0" style="-fx-background-color: #D0F4DE;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                   <AnchorPane fx:id="profile_anchorPane" prefHeight="500.0" prefWidth="650.0" style="-fx-background-color: #D0F4DE;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
@@ -124,9 +101,46 @@
                               <Font name="System Bold" size="22.0" />
                            </font>
                         </PasswordField>
-                        <Button fx:id="logoutButton_profile" onAction="#handleLogout" layoutX="236.0" layoutY="862.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="108.0" style="-fx-background-color: black; -fx-opacity: 0.8;" text="Logout" textFill="WHITE">
+                        <Button fx:id="logoutButton_profile" layoutX="236.0" layoutY="862.0" mnemonicParsing="false" onAction="#handleLogout" prefHeight="47.0" prefWidth="108.0" style="-fx-background-color: black; -fx-opacity: 0.8;" text="Logout" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="practice_anchorPane" layoutX="67.0" prefHeight="1000.0" prefWidth="1183.0" style="-fx-background-color: #D0F4DE;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Label layoutX="509.0" layoutY="14.0" prefHeight="62.0" prefWidth="171.0" text="Practice" underline="true" AnchorPane.leftAnchor="509.0" AnchorPane.rightAnchor="570.0" AnchorPane.topAnchor="14.0">
+                           <font>
+                              <Font name="System Bold" size="42.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="351.0" layoutY="184.0" maxHeight="58.0" maxWidth="219.0" minHeight="32.0" minWidth="135.0" prefHeight="58.0" prefWidth="219.0" text="&gt; Difficulty" AnchorPane.leftAnchor="351.0" AnchorPane.rightAnchor="680.0" AnchorPane.topAnchor="184.0">
+                           <font>
+                              <Font name="System Bold" size="32.0" />
+                           </font>
+                        </Label>
+                        <ChoiceBox fx:id="practice_DifficultyChoiceBox" layoutX="393.0" layoutY="263.0" maxHeight="50.0" maxWidth="300.0" minHeight="25.0" minWidth="150.0" prefHeight="42.0" prefWidth="299.0" AnchorPane.leftAnchor="393.0" AnchorPane.topAnchor="263.0">
+                           <items>
+                              <FXCollections fx:factory="observableArrayList">
+                                 <String fx:value="Easy" />
+                                 <String fx:value="Medium" />
+                                 <String fx:value="Hard" />
+                              </FXCollections>
+                           </items>
+                           <value>
+                              <String fx:value="Easy" />
+                           </value>
+                        </ChoiceBox>
+                        <Label layoutX="352.0" layoutY="363.0" prefHeight="47.0" prefWidth="315.0" text="&gt; Paragraph Length" AnchorPane.leftAnchor="352.0" AnchorPane.rightAnchor="583.0" AnchorPane.topAnchor="363.0">
+                           <font>
+                              <Font name="System Bold" size="32.0" />
+                           </font>
+                        </Label>
+                        <Slider fx:id="practice_ParaLengthSlider" accessibleText="Words'" blockIncrement="30.0" layoutX="393.0" layoutY="432.0" majorTickUnit="30.0" max="90.0" maxHeight="34.0" maxWidth="450.0" min="30.0" minHeight="34.0" minWidth="360.0" minorTickCount="10" prefHeight="34.0" prefWidth="427.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" AnchorPane.leftAnchor="393.0" AnchorPane.topAnchor="432.0" />
+                        <Button fx:id="startButton_practice" layoutX="537.0" layoutY="825.0" maxHeight="58.0" maxWidth="195.0" mnemonicParsing="false" onAction="#handlePracticeMode" prefHeight="58.0" prefWidth="116.0" style="-fx-background-color: #03a5fc;" text="Start" AnchorPane.bottomAnchor="117.0" AnchorPane.leftAnchor="537.0">
+                           <font>
+                              <Font size="20" />
                            </font>
                         </Button>
                      </children>
@@ -143,19 +157,41 @@
                               <Font name="System Bold" size="32.0" />
                            </font>
                         </Label>
-                        <ChoiceBox layoutX="537.0" layoutY="187.0" maxHeight="50.0" maxWidth="306.0" minHeight="25.0" minWidth="150.0" prefHeight="34.0" prefWidth="306.0" AnchorPane.leftAnchor="537.0" AnchorPane.topAnchor="187.0" />
+                        <ChoiceBox fx:id="test_difficultyChoiceBox" layoutX="537.0" layoutY="187.0" maxHeight="50.0" maxWidth="306.0" minHeight="25.0" minWidth="150.0" prefHeight="34.0" prefWidth="306.0" AnchorPane.leftAnchor="537.0" AnchorPane.topAnchor="187.0">
+                           <items>
+                              <FXCollections fx:factory="observableArrayList">
+                                 <String fx:value="Easy" />
+                                 <String fx:value="Medium" />
+                                 <String fx:value="Hard" />
+                              </FXCollections>
+                           </items>
+                           <value>
+                              <String fx:value="Easy" />
+                           </value>
+                        </ChoiceBox>
                         <Label layoutX="403.0" layoutY="248.0" prefHeight="61.0" prefWidth="306.0" text="&gt; Paragraph Length" AnchorPane.leftAnchor="403.0" AnchorPane.rightAnchor="541.0" AnchorPane.topAnchor="248.0">
                            <font>
                               <Font name="System Bold" size="32.0" />
                            </font>
                         </Label>
-                        <Slider accessibleText="Words'" blockIncrement="30.0" layoutX="537.0" layoutY="326.0" majorTickUnit="30.0" max="90.0" maxHeight="34.0" maxWidth="450.0" min="30.0" minHeight="34.0" minWidth="360.0" minorTickCount="0" prefHeight="34.0" prefWidth="427.0" showTickLabels="true" snapToTicks="true" AnchorPane.leftAnchor="537.0" AnchorPane.topAnchor="326.0" />
-                        <Label layoutX="403.0" layoutY="401.0" prefHeight="42.0" prefWidth="237.0" text="&gt; Time Period" AnchorPane.leftAnchor="403.0" AnchorPane.rightAnchor="610.0" AnchorPane.topAnchor="401.0">
+                        <Slider fx:id="test_ParaLengthSlider" accessibleText="Words'" blockIncrement="30.0" layoutX="537.0" layoutY="326.0" majorTickUnit="30.0" max="90.0" maxHeight="70.0" maxWidth="450.0" min="30.0" minHeight="34.0" minWidth="360.0" minorTickCount="10" prefHeight="47.0" prefWidth="427.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" AnchorPane.leftAnchor="537.0" AnchorPane.topAnchor="326.0" />
+                        <Label layoutX="403.0" layoutY="401.0" prefHeight="47.0" prefWidth="306.0" text="&gt; Time Period (min)" AnchorPane.leftAnchor="403.0" AnchorPane.rightAnchor="541.0" AnchorPane.topAnchor="401.0">
                            <font>
                               <Font name="System Bold" size="32.0" />
                            </font>
                         </Label>
-                        <ChoiceBox layoutX="537.0" layoutY="466.0" prefHeight="34.0" prefWidth="207.0" AnchorPane.leftAnchor="537.0" AnchorPane.topAnchor="466.0" />
+                        <ChoiceBox fx:id="test_TimePeriodChoiceBox" layoutX="537.0" layoutY="466.0" prefHeight="42.0" prefWidth="306.0" AnchorPane.leftAnchor="537.0" AnchorPane.topAnchor="466.0">
+                           <items>
+                              <FXCollections fx:factory="observableArrayList">
+                                 <Integer fx:value="1" />
+                                 <Integer fx:value="3" />
+                                 <Integer fx:value="5" />
+                              </FXCollections>
+                           </items>
+                           <value>
+                              <Integer fx:value="1" />
+                           </value>
+                        </ChoiceBox>
                         <Button fx:id="startButton_test" layoutX="578.0" layoutY="735.0" maxHeight="62.0" maxWidth="195.0" mnemonicParsing="false" onAction="#handleTestMode" prefHeight="62.0" prefWidth="125.0" style="-fx-background-color: #03a5fc;" text="Start" AnchorPane.bottomAnchor="203.0" AnchorPane.leftAnchor="578.0">
                            <font>
                               <Font size="20" />

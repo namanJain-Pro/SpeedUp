@@ -13,6 +13,7 @@ public class DataSource {
     private PreparedStatement track_user;
     private PreparedStatement query_user_info;
     private PreparedStatement get_user;
+    private PreparedStatement insert_practice_record;
 
     private DataSource(){
     }
@@ -30,6 +31,7 @@ public class DataSource {
             track_user = connection.prepareStatement(Constant.TRACK_LOGIN_STATUS);
             query_user_info = connection.prepareStatement(Constant.QUERY_SIGNED_USER_INFO);
             get_user = connection.prepareStatement(Constant.GET_USER_INFO);
+            insert_practice_record = connection.prepareStatement(Constant.INSERT_PRACTICE_RECORD);
             return true;
         }catch (SQLException e){
             System.out.println("Couldn't connect to database "+e.getMessage());
@@ -56,6 +58,9 @@ public class DataSource {
             }
             if(get_user != null){
                 get_user.close();
+            }
+            if(insert_practice_record != null){
+                insert_practice_record.close();
             }
             if(connection != null){
                 connection.close();
@@ -183,6 +188,24 @@ public class DataSource {
         } catch (SQLException e){
             System.out.println("Problem in gaining user info " + e.getMessage());
             return null;
+        }
+    }
+
+    public boolean updatePracticeRecord(String diff, int length, int speed, int error){
+        try {
+            User user = getCurrentUser();
+            insert_practice_record.setInt(1, user.getId());
+            insert_practice_record.setString(2, diff);
+            insert_practice_record.setInt(3, length);
+            insert_practice_record.setInt(4, speed);
+            insert_practice_record.setInt(5, error);
+
+            insert_practice_record.execute();
+
+            return true;
+        } catch (SQLException e){
+            System.out.println("Couldn't entry practice record "+e.getMessage());
+            return false;
         }
     }
 }

@@ -1,6 +1,7 @@
 package Run;
 
 import DataModel.DataSource;
+import DataModel.ParagraphGen;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.Group;
@@ -25,11 +26,11 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) {
+//        mainController.loadScreen(practiceScreenId, practiceScreen);
+//        mainController.loadScreen(testScreenId, testScreen);
 
         if(DataSource.getInstance().checkUserLoginStatus()){
             mainController.loadScreen(mainScreenId, mainScreen);
-            mainController.loadScreen(practiceScreenId,practiceScreen);
-            mainController.loadScreen(testScreenId,testScreen);
             mainController.setScreen(mainScreenId);
         } else{
             mainController.loadScreen(loginScreenId,loginScreen);
@@ -55,6 +56,9 @@ public class Main extends Application {
         if(!DataSource.getInstance().open()){
             Platform.exit();
         }
+        if(!ParagraphGen.getInstance().open()){
+            Platform.exit();
+        }
         DataSource.getInstance().create();
     }
 
@@ -62,5 +66,6 @@ public class Main extends Application {
     public void stop() throws Exception {
         super.stop();
         DataSource.getInstance().close();
+        ParagraphGen.getInstance().close();
     }
 }

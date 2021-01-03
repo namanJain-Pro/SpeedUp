@@ -137,8 +137,6 @@ public class LoginScreenController implements ControlledScreen {
 
     private void load() {
         myController.loadScreen(mainScreenId, mainScreen);
-        myController.loadScreen(practiceScreenId,practiceScreen);
-        myController.loadScreen(testScreenId,testScreen);
     }
 
 

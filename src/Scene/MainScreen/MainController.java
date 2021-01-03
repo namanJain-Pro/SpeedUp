@@ -4,21 +4,18 @@ import DataModel.DataSource;
 import Run.Main;
 import Scene.ControlledScreen;
 import DataModel.User;
+import Scene.PracticeScreen.PracticeScreenController;
 import Scene.ScreenController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 
-import java.io.BufferedInputStream;
-import java.io.EOFException;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.nio.file.FileSystems;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+
+import static Run.Main.*;
 
 public class MainController implements ControlledScreen {
 
@@ -51,6 +48,24 @@ public class MainController implements ControlledScreen {
     @FXML
     private Button startButton_practice;
 
+    @FXML
+    private ChoiceBox<String> practice_DifficultyChoiceBox;
+
+    @FXML
+    private Slider practice_ParaLengthSlider;
+
+    //***********************************************************************************
+
+    //Test Tab Variables
+    @FXML
+    private ChoiceBox<String> test_difficultyChoiceBox;
+
+    @FXML
+    private ChoiceBox<Integer> test_TimePeriodChoiceBox;
+
+    @FXML
+    private Slider test_ParaLengthSlider;
+    //***********************************************************************************
 
     @FXML
     public void initialize(){
@@ -110,12 +125,19 @@ public class MainController implements ControlledScreen {
 
     @FXML
     public void handlePracticeMode(){
-        myController.setScreen(Main.practiceScreenId);
+        String difficulty = practice_DifficultyChoiceBox.getValue();
+        int length =(int) practice_ParaLengthSlider.getValue();
+
+        PracticeScreenController.gatherInfo(length, difficulty);
+
+        myController.loadScreen(practiceScreenId,practiceScreen);
+        myController.setScreen(practiceScreenId);
     }
 
     @FXML
     public void handleTestMode(){
-        myController.setScreen(Main.testScreenId);
+        myController.loadScreen(testScreenId,testScreen);
+        myController.setScreen(testScreenId);
     }
 
     @FXML
