@@ -46,7 +46,6 @@ public class PracticeScreenController implements ControlledScreen {
 
     @FXML
     public void initialize() {
-        populateTextArea();
         reset();
         wpmTab.setText("0");
     }

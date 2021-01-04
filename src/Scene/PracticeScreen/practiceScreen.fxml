@@ -26,7 +26,7 @@
                   </Label>
                   <Label fx:id="wpmTab" layoutX="148.0" layoutY="15.0" prefHeight="60.0" prefWidth="66.0" text="0" textAlignment="CENTER">
                      <font>
-                        <Font name="Bell MT Bold" size="40.0" />
+                        <Font name="Bauhaus 93" size="40.0" />
                      </font>
                   </Label>
                   <Label layoutX="248.0" layoutY="25.0" prefHeight="39.0" prefWidth="72.0" text="Error :" textFill="#052f5f">
@@ -36,9 +36,14 @@
                   </Label>
                   <Label fx:id="errorTab" layoutX="320.0" layoutY="15.0" prefHeight="60.0" prefWidth="66.0" text="0" textFill="#dd0202">
                      <font>
-                        <Font name="Bell MT Bold" size="40.0" />
+                        <Font name="Bauhaus 93" size="40.0" />
                      </font>
                   </Label>
+                  <Button fx:id="backButton1" layoutX="1250.0" layoutY="25.0" mnemonicParsing="false" onAction="#initialize" prefHeight="50.0" prefWidth="114.0" text="Refresh" textFill="#052f5f">
+                     <font>
+                        <Font name="System Bold Italic" size="23.0" />
+                     </font>
+                  </Button>
                </children>
             </AnchorPane>
             <AnchorPane layoutY="100.0" prefHeight="900.0" prefWidth="1500.0">
