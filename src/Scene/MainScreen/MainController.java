@@ -6,9 +6,9 @@ import Scene.ControlledScreen;
 import DataModel.User;
 import Scene.PracticeScreen.PracticeScreenController;
 import Scene.ScreenController;
+import Scene.TestScreen.TestScreenController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 
@@ -124,6 +124,17 @@ public class MainController implements ControlledScreen {
     }
 
     @FXML
+    public void handleTestMode(){
+        String difficulty = test_difficultyChoiceBox.getValue();
+        int length =(int) test_ParaLengthSlider.getValue();
+        int time = test_TimePeriodChoiceBox.getValue()*60;
+        TestScreenController.getValues(time, length, difficulty);
+
+        myController.loadScreen(Main.testScreenId, Main.testScreen);
+        myController.setScreen(Main.testScreenId);
+    }
+
+    @FXML
     public void handlePracticeMode(){
         String difficulty = practice_DifficultyChoiceBox.getValue();
         int length =(int) practice_ParaLengthSlider.getValue();
@@ -132,12 +143,6 @@ public class MainController implements ControlledScreen {
 
         myController.loadScreen(practiceScreenId,practiceScreen);
         myController.setScreen(practiceScreenId);
-    }
-
-    @FXML
-    public void handleTestMode(){
-        myController.loadScreen(testScreenId,testScreen);
-        myController.setScreen(testScreenId);
     }
 
     @FXML

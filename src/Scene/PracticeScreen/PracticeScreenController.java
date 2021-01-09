@@ -70,6 +70,8 @@ public class PracticeScreenController implements ControlledScreen {
             if (inputLetters[i] == letters[i]){
                 charCounter++;
                 textArea_Practice.selectRange(0, charCounter);
+                end = System.nanoTime();
+                calculation();
                 check = false;
             }else {
                 if(check == false){

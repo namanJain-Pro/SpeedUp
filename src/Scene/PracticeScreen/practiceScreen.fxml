@@ -14,32 +14,32 @@
          <children>
             <AnchorPane prefHeight="100.0" prefWidth="1500.0" style="-fx-background-color: #BAD1CD;">
                <children>
-                  <Button fx:id="backButton" layoutX="1376.0" layoutY="25.0" mnemonicParsing="false" onAction="#goToHomeScreen" prefHeight="50.0" prefWidth="91.0" text="Back" textFill="#052f5f">
+                  <Button fx:id="backButton" layoutX="1375.0" layoutY="25.0" mnemonicParsing="false" onAction="#goToHomeScreen" prefHeight="50.0" prefWidth="101.0" text="Back" textFill="#052f5f">
                      <font>
                         <Font name="System Bold Italic" size="23.0" />
                      </font>
                   </Button>
-                  <Label layoutX="64.0" layoutY="25.0" prefHeight="39.0" prefWidth="84.0" text="Speed : " textFill="#052f5f">
+                  <Label layoutX="64.0" layoutY="25.0" prefHeight="39.0" prefWidth="101.0" text="Speed : " textFill="#052f5f">
                      <font>
                         <Font name="Berlin Sans FB Demi Bold" size="23.0" />
                      </font>
                   </Label>
-                  <Label fx:id="wpmTab" layoutX="148.0" layoutY="15.0" prefHeight="60.0" prefWidth="66.0" text="0" textAlignment="CENTER">
+                  <Label fx:id="wpmTab" layoutX="165.0" layoutY="15.0" prefHeight="60.0" prefWidth="66.0" text="0" textAlignment="CENTER">
                      <font>
                         <Font name="Bauhaus 93" size="40.0" />
                      </font>
                   </Label>
-                  <Label layoutX="248.0" layoutY="25.0" prefHeight="39.0" prefWidth="72.0" text="Error :" textFill="#052f5f">
+                  <Label layoutX="248.0" layoutY="25.0" prefHeight="39.0" prefWidth="84.0" text="Error :" textFill="#052f5f">
                      <font>
                         <Font name="Berlin Sans FB Demi Bold" size="23.0" />
                      </font>
                   </Label>
-                  <Label fx:id="errorTab" layoutX="320.0" layoutY="15.0" prefHeight="60.0" prefWidth="66.0" text="0" textFill="#dd0202">
+                  <Label fx:id="errorTab" layoutX="338.0" layoutY="15.0" prefHeight="60.0" prefWidth="66.0" text="0" textFill="#dd0202">
                      <font>
                         <Font name="Bauhaus 93" size="40.0" />
                      </font>
                   </Label>
-                  <Button fx:id="backButton1" layoutX="1250.0" layoutY="25.0" mnemonicParsing="false" onAction="#initialize" prefHeight="50.0" prefWidth="114.0" text="Refresh" textFill="#052f5f">
+                  <Button fx:id="backButton1" layoutX="1229.0" layoutY="25.0" mnemonicParsing="false" onAction="#initialize" prefHeight="50.0" prefWidth="135.0" text="Refresh" textFill="#052f5f">
                      <font>
                         <Font name="System Bold Italic" size="23.0" />
                      </font>
@@ -58,7 +58,7 @@
                   </TextArea>
                   <TextArea fx:id="practice_inputText" layoutX="250.0" layoutY="423.0" onKeyTyped="#handleKeyTyped" onMouseClicked="#handleMouseClick" prefHeight="340.0" prefWidth="1000.0" promptText="Type Here" wrapText="true">
                      <font>
-                        <Font name="System Bold" size="22.0" />
+                        <Font size="22.0" />
                      </font>
                   </TextArea>
                </children>

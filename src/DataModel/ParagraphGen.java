@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class ParagraphGen {
 
     public static final String DB_NAME = "words.db";
-    public static final String CONNECTION_STRING = "jdbc:sqlite:C:\\Users\\WorkModeON\\IdeaProjects\\Speed Up Mini Project With Planning\\src\\DataFiles\\"+DB_NAME;
+    public static final String CONNECTION_STRING = "jdbc:sqlite:/home/namanjain/Workspace/IdeaProjects/Speed Up Mini Project With Planning/src/DataFiles/"+DB_NAME;
 
     public static final String TABLE_WORD = "wordList";
     public static final String COLUMN_WORD_ID = "_id";

@@ -14,6 +14,7 @@ public class DataSource {
     private PreparedStatement query_user_info;
     private PreparedStatement get_user;
     private PreparedStatement insert_practice_record;
+    private PreparedStatement insert_test_record;
 
     private DataSource(){
     }
@@ -32,6 +33,7 @@ public class DataSource {
             query_user_info = connection.prepareStatement(Constant.QUERY_SIGNED_USER_INFO);
             get_user = connection.prepareStatement(Constant.GET_USER_INFO);
             insert_practice_record = connection.prepareStatement(Constant.INSERT_PRACTICE_RECORD);
+            insert_test_record = connection.prepareStatement(Constant.INSERT_TEST_RECORD);
             return true;
         }catch (SQLException e){
             System.out.println("Couldn't connect to database "+e.getMessage());
@@ -61,6 +63,9 @@ public class DataSource {
             }
             if(insert_practice_record != null){
                 insert_practice_record.close();
+            }
+            if(insert_test_record != null){
+                insert_test_record.close();
             }
             if(connection != null){
                 connection.close();
@@ -205,6 +210,25 @@ public class DataSource {
             return true;
         } catch (SQLException e){
             System.out.println("Couldn't entry practice record "+e.getMessage());
+            return false;
+        }
+    }
+
+    public boolean updateTestRecord(String diff, int length, int speed, int error, int time){
+        try {
+            User user = getCurrentUser();
+            insert_test_record.setInt(1, user.getId());
+            insert_test_record.setString(2, diff);
+            insert_test_record.setInt(3, length);
+            insert_test_record.setInt(4, speed);
+            insert_test_record.setInt(5, error);
+            insert_test_record.setInt(6, time);
+
+            insert_test_record.execute();
+
+            return true;
+        } catch (SQLException e){
+            System.out.println("Couldn't entry test record "+e.getMessage());
             return false;
         }
     }

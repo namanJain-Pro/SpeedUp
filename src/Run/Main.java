@@ -26,8 +26,6 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-//        mainController.loadScreen(practiceScreenId, practiceScreen);
-//        mainController.loadScreen(testScreenId, testScreen);
 
         if(DataSource.getInstance().checkUserLoginStatus()){
             mainController.loadScreen(mainScreenId, mainScreen);

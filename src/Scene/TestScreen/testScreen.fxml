@@ -7,54 +7,59 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-
 <StackPane alignment="center" prefHeight="1000.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Scene.TestScreen.TestScreenController">
    <children>
-      <AnchorPane prefHeight="1000.0" prefWidth="1500.0" style="-fx-background-color: #0B0A07;">
+      <AnchorPane prefHeight="1000.0" prefWidth="1500.0" style="-fx-background-color: #323e4a;">
          <children>
-            <AnchorPane prefHeight="100.0" prefWidth="1500.0" style="-fx-background-color: #71A9F7;">
+            <AnchorPane prefHeight="100.0" prefWidth="1500.0" style="-fx-background-color: rgba(113, 169, 247, 0.8);">
                <children>
-                  <Label layoutX="50.0" layoutY="31.0" prefHeight="39.0" prefWidth="89.0" text="Speed :" textFill="#00335d">
+                  <Label layoutX="25.0" layoutY="31.0" prefHeight="39.0" prefWidth="114.0" text="Speed :" textFill="#00335d">
                      <font>
                         <Font name="Berlin Sans FB Demi Bold" size="27.0" />
                      </font>
                   </Label>
-                  <Label layoutX="139.0" layoutY="21.0" prefHeight="59.0" prefWidth="72.0" text="0" textAlignment="CENTER">
+                  <Label fx:id="test_wpmLabel" layoutX="139.0" layoutY="21.0" prefHeight="59.0" prefWidth="72.0" text="0" textAlignment="CENTER">
                      <font>
                         <Font name="Bauhaus 93" size="41.0" />
                      </font>
                   </Label>
-                  <Label layoutX="274.0" layoutY="31.0" prefHeight="39.0" prefWidth="82.0" text="Error :" textFill="#00335d">
+                  <Label layoutX="267.0" layoutY="31.0" prefHeight="39.0" prefWidth="89.0" text="Error :" textFill="#00335d">
                      <font>
                         <Font name="Berlin Sans FB Demi Bold" size="27.0" />
                      </font>
                   </Label>
-                  <Label layoutX="356.0" layoutY="21.0" prefHeight="59.0" prefWidth="72.0" text="0" textAlignment="CENTER" textFill="#d30b0b">
+                  <Label fx:id="test_errorLabel" layoutX="356.0" layoutY="21.0" prefHeight="59.0" prefWidth="72.0" text="0" textAlignment="CENTER" textFill="#d30b0b">
                      <font>
                         <Font name="Bauhaus 93" size="41.0" />
                      </font>
                   </Label>
-                  <Label layoutX="479.0" layoutY="31.0" prefHeight="39.0" prefWidth="82.0" text="Time :" textFill="#00335d">
+                  <Label layoutX="472.0" layoutY="31.0" prefHeight="39.0" prefWidth="89.0" text="Time :" textFill="#00335d">
                      <font>
                         <Font name="Berlin Sans FB Demi Bold" size="27.0" />
                      </font>
                   </Label>
-                  <Button fx:id="backButton" layoutX="1352.0" layoutY="25.0" mnemonicParsing="false" onAction="#goToHomeScreen" prefHeight="39.0" prefWidth="89.0" text="Back" textFill="#052f5f">
+                  <Button fx:id="backButton" layoutX="1340.0" layoutY="25.0" mnemonicParsing="false" onAction="#goToHomeScreen" prefHeight="45.0" prefWidth="101.0" text="Back" textFill="#052f5f">
                      <font>
                         <Font name="System Bold Italic" size="23.0" />
                      </font>
                   </Button>
-                  <Label layoutX="561.0" layoutY="4.0" prefHeight="93.0" prefWidth="114.0" text="0" textAlignment="CENTER">
+                  <Label fx:id="timerText" layoutX="561.0" layoutY="4.0" prefHeight="93.0" prefWidth="126.0" textAlignment="CENTER">
                      <font>
                         <Font name="Bauhaus 93" size="65.0" />
                      </font>
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane layoutY="100.0" prefHeight="900.0" prefWidth="1500.0">
+            <AnchorPane layoutY="100.0" onKeyTyped="#handleKeyTyped" prefHeight="900.0" prefWidth="1500.0">
                <children>
-                  <TextArea layoutX="150.0" layoutY="89.0" opacity="0.9" prefHeight="336.0" prefWidth="1200.0" />
-                  <TextArea layoutX="250.0" layoutY="467.0" prefHeight="286.0" prefWidth="1000.0" />
+                  <TextArea fx:id="test_textArea" layoutX="150.0" layoutY="89.0" opacity="0.9" prefHeight="336.0" prefWidth="1200.0" wrapText="true">
+                     <font>
+                        <Font size="26.0" />
+                     </font></TextArea>
+                  <TextArea fx:id="test_inputText" layoutX="250.0" layoutY="467.0" onKeyTyped="#handleKeyTyped" onMouseClicked="#handleMouseClick" prefHeight="312.0" prefWidth="1000.0" wrapText="true">
+                     <font>
+                        <Font size="22.0" />
+                     </font></TextArea>
                </children>
             </AnchorPane>
          </children>
