@@ -62,6 +62,8 @@ public class TestScreenController implements ControlledScreen {
 
     @FXML
     public void goToHomeScreen(){
+        myController.unloadScreen(Main.mainScreenId);
+        myController.loadScreen(Main.mainScreenId, Main.mainScreen);
         myController.setScreen(Main.mainScreenId);
     }
 
@@ -85,11 +87,13 @@ public class TestScreenController implements ControlledScreen {
             }
         }
 
-        if(inputLetters.length >= letters.length || timeSeconds <= 0){
+        if(inputLetters.length >= letters.length){
+            timeline.stop();
+            int time = timePeriod - timeSeconds;
+            test_inputText.setDisable(true);
             end = System.nanoTime();
             int speed = calculation();
-            DataSource.getInstance().updateTestRecord(difficulty, lengthOfPara, speed, wrongCharCounter, timePeriod);
-            test_inputText.setDisable(true);
+            DataSource.getInstance().updateTestRecord(difficulty, lengthOfPara, speed, wrongCharCounter, time);
         }
     }
 
@@ -138,6 +142,10 @@ public class TestScreenController implements ControlledScreen {
                                             timeSeconds.toString());
                                     if (timeSeconds <= 0) {
                                         timeline.stop();
+                                        test_inputText.setDisable(true);
+                                        end = System.nanoTime();
+                                        int speed = calculation();
+                                        DataSource.getInstance().updateTestRecord(difficulty, lengthOfPara, speed, wrongCharCounter, timePeriod);
                                         test_textArea.setText("Times Up !!!");
                                     }
                                 }

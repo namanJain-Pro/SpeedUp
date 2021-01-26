@@ -1,12 +1,14 @@
 package Scene.MainScreen;
 
 import DataModel.DataSource;
+import DataModel.Statistics;
 import Run.Main;
 import Scene.ControlledScreen;
 import DataModel.User;
 import Scene.PracticeScreen.PracticeScreenController;
 import Scene.ScreenController;
 import Scene.TestScreen.TestScreenController;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -14,6 +16,7 @@ import javafx.scene.layout.AnchorPane;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 
 import static Run.Main.*;
 
@@ -29,6 +32,9 @@ public class MainController implements ControlledScreen {
 
     //Profile Tab Variables
     @FXML
+    private Label profile_ErrorLabel;
+
+    @FXML
     private CheckBox checkBox_profile;
 
     @FXML
@@ -41,7 +47,8 @@ public class MainController implements ControlledScreen {
     private PasswordField newPasswordField_profile,confirmPasswordField_profile;
 
     @FXML
-    private Button saveButton_profile,resetButton_profile,logoutButton_profile;
+    private Button saveButton_profile;
+
     //*********************************************************************************
 
     //Practice Tab Variables
@@ -67,15 +74,70 @@ public class MainController implements ControlledScreen {
     private Slider test_ParaLengthSlider;
     //***********************************************************************************
 
+    // Statistics Tab Variables
+    @FXML
+    private TableView<Statistics> tableView;
+
+    @FXML
+    private ChoiceBox<String> statistic_RecordChoiceBox;
+
+    @FXML
+    private Label statistic_BestScoreLabel;
+
+    @FXML
+    private ProgressBar statistic_progressBar;
+
+    private String value = null;
+
+    private double bestScore = 200.00;
+    //***********************************************************************************
+
     @FXML
     public void initialize(){
+        populateTable();
         handleChanges();
         populatingProfileTabFields();
+    }
+
+    @FXML
+    public void populateTable() {
+        value = statistic_RecordChoiceBox.getValue();
+        setBestScore();
+        tableView.setItems(DataSource.getInstance().getRecords(value));
     }
 
     @Override
     public void setScreenParent(ScreenController screenController) {
         myController = screenController;
+    }
+
+    @FXML
+    public void handleUserInfoChanges() {
+        String name = nameField_profile.getText();
+        String email = emailField_profile.getText();
+        String dob = dobField_profile.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        String oldPassword = oldPasswordField_profile.getText();
+        String password = DataSource.getInstance().getCurrentUser().getPassword();
+
+        if(!oldPassword.trim().isEmpty()){
+            if(oldPassword.equals(DataSource.getInstance().getCurrentUser().getPassword())) {
+                profile_ErrorLabel.setText("");
+                String newPassword = newPasswordField_profile.getText();
+                String retypedPassword = confirmPasswordField_profile.getText();
+                if(newPassword.equals(retypedPassword)) {
+                    profile_ErrorLabel.setText("");
+                    password = newPassword;
+                }else {
+                    profile_ErrorLabel.setText("New entered passwords didn't match");
+                }
+            } else {
+                profile_ErrorLabel.setText("Old Password didn't match");
+            }
+        }
+
+        checkBox_profile.setSelected(false);
+        handleChanges();
+        DataSource.getInstance().updateUserInfo(name, email, dob, password);
     }
 
     @FXML
@@ -102,6 +164,7 @@ public class MainController implements ControlledScreen {
             oldPasswordField_profile.setDisable(true);
             newPasswordField_profile.setDisable(true);
             confirmPasswordField_profile.setDisable(true);
+            saveButton_profile.setDisable(true);
         }else{
             nameField_profile.setDisable(false);
             dobField_profile.setDisable(false);
@@ -109,6 +172,7 @@ public class MainController implements ControlledScreen {
             oldPasswordField_profile.setDisable(false);
             newPasswordField_profile.setDisable(false);
             confirmPasswordField_profile.setDisable(false);
+            saveButton_profile.setDisable(false);
         }
     }
 
@@ -148,10 +212,31 @@ public class MainController implements ControlledScreen {
     @FXML
     public void handleLogout(){
         DataSource.getInstance().changeLoginStatusTo0();
+        myController.unloadScreen(loginScreenId);
+        myController.loadScreen(Main.loginScreenId, loginScreen);
         myController.setScreen(Main.loginScreenId);
     }
 
     private User getUser(){
         return DataSource.getInstance().getCurrentUser();
+    }
+
+    private void setBestScore() {
+        ObservableList<Statistics> list = DataSource.getInstance().getRecords(value);
+        int max = 0;
+
+        for(Statistics obj : list) {
+            int temp = obj.getWpm();
+            if(temp >= max)
+                max = temp;
+        }
+
+        setStatistic_progressBar(max);
+        statistic_BestScoreLabel.setText(max+"");
+    }
+
+    private void setStatistic_progressBar(int userBestScore) {
+        double percentScore = userBestScore/bestScore;
+        statistic_progressBar.setProgress(percentScore);
     }
 }

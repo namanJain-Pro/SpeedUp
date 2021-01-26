@@ -78,7 +78,21 @@ public class Constant {
     public static final String QUERY_SIGNED_USER_INFO = "SELECT " + COLUMN_LOGIN_STATS_USERNAME + " FROM " +
             TABLE_LOGIN_STATS + " WHERE " + COLUMN_LOGIN_STATS_STATUS + " = 1";
 
+    public static final String QUERY_GET_TEST_RECORD = "SELECT " + COLUMN_TEST_RECORD_DIFFICULTY + ", " +
+            COLUMN_TEST_RECORD_LENGTH + ", " + COLUMN_TEST_RECORD_SPEED + ", " + COLUMN_TEST_RECORD_ERROR +
+            ", " + COLUMN_TEST_RECORD_TIME + " FROM " + TABLE_TEST_RECORD + " WHERE " +
+            COLUMN_TEST_RECORD_INDEX + " = ?";
+
+    public static final String QUERY_GET_PRACTICE_RECORD = "SELECT " + COLUMN_PRACTICE_RECORD_DIFFICULTY + ", " +
+            COLUMN_PRACTICE_RECORD_LENGTH + ", " + COLUMN_PRACTICE_RECORD_SPEED + ", " + COLUMN_PRACTICE_RECORD_ERROR +
+            " FROM " + TABLE_PRACTICE_RECORD + " WHERE " + COLUMN_PRACTICE_RECORD_INDEX + " = ?";
+
+    public static final String UPDATE_USER_PASSWORD = "UPDATE " + TABLE_USER + " SET " + COLUMN_USER_NAME +
+            " = ?, " + COLUMN_USER_EMAIL + " = ?, " + COLUMN_USER_DOB + " = ?, " + COLUMN_USER_PASSWORD +
+            " = ? WHERE " + COLUMN_USER_ID + " = ?";
+
     public static final String GET_USER_INFO = "SELECT * FROM " + TABLE_USER + " WHERE " + COLUMN_USER_NAME + " = ?";
+
 
     private Constant() {
 

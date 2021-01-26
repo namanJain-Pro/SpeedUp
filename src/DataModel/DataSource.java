@@ -1,5 +1,9 @@
 package DataModel;
 
+import javafx.beans.Observable;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import java.sql.*;
 
 public class DataSource {
@@ -15,6 +19,9 @@ public class DataSource {
     private PreparedStatement get_user;
     private PreparedStatement insert_practice_record;
     private PreparedStatement insert_test_record;
+    private PreparedStatement query_practice_record;
+    private PreparedStatement query_test_record;
+    private PreparedStatement update_user_password;
 
     private DataSource(){
     }
@@ -34,6 +41,9 @@ public class DataSource {
             get_user = connection.prepareStatement(Constant.GET_USER_INFO);
             insert_practice_record = connection.prepareStatement(Constant.INSERT_PRACTICE_RECORD);
             insert_test_record = connection.prepareStatement(Constant.INSERT_TEST_RECORD);
+            query_practice_record = connection.prepareStatement(Constant.QUERY_GET_PRACTICE_RECORD);
+            query_test_record = connection.prepareStatement(Constant.QUERY_GET_TEST_RECORD);
+            update_user_password = connection.prepareStatement(Constant.UPDATE_USER_PASSWORD);
             return true;
         }catch (SQLException e){
             System.out.println("Couldn't connect to database "+e.getMessage());
@@ -66,6 +76,15 @@ public class DataSource {
             }
             if(insert_test_record != null){
                 insert_test_record.close();
+            }
+            if(query_practice_record != null) {
+                query_practice_record.close();
+            }
+            if(query_test_record != null) {
+                query_test_record.close();
+            }
+            if(update_user_password != null) {
+                update_user_password.close();
             }
             if(connection != null){
                 connection.close();
@@ -232,6 +251,58 @@ public class DataSource {
             return false;
         }
     }
+
+    public ObservableList<Statistics> getRecords(String value) {
+        ObservableList<Statistics> records = FXCollections.observableArrayList();
+        User user = getCurrentUser();
+        int id = user.getId();
+
+        try {
+            ResultSet resultSet;
+            Statistics stat;
+
+            if(value.equals("Practice Record") || value == null) {
+                query_practice_record.setInt(1, id);
+                resultSet = query_practice_record.executeQuery();
+
+                while (resultSet.next()) {
+                    stat = new Statistics(resultSet.getString(1), resultSet.getInt(2), resultSet.getInt(3),
+                            resultSet.getInt(4), 0);
+                    records.add(stat);
+                }
+            } else {
+                query_test_record.setInt(1, id);
+                resultSet = query_test_record.executeQuery();
+
+                while (resultSet.next()) {
+                    stat = new Statistics(resultSet.getString(1), resultSet.getInt(2), resultSet.getInt(3),
+                            resultSet.getInt(4), resultSet.getInt(5));
+                    records.add(stat);
+                }
+            }
+
+            return records;
+        } catch (SQLException e){
+            System.out.println("Couldn't get the data " + e.getMessage());
+            return null;
+        }
+
+    }
+
+    public void updateUserInfo(String name, String email, String dob, String password) {
+        try {
+            update_user_password.setString(1, name);
+            update_user_password.setString(2, email);
+            update_user_password.setString(3, dob);
+            update_user_password.setString(4, password);
+            update_user_password.setInt(5, getCurrentUser().getId());
+            update_user_password.execute();
+        } catch (SQLException e) {
+            System.out.println("Couldn't update user info " + e.getMessage());
+        }
+    }
+
+
 }
 
 

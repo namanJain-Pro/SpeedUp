@@ -57,6 +57,8 @@ public class PracticeScreenController implements ControlledScreen {
 
     @FXML
     public void goToHomeScreen(){
+        myController.unloadScreen(Main.mainScreenId);
+        myController.loadScreen(Main.mainScreenId, Main.mainScreen);
         myController.setScreen(Main.mainScreenId);
         reset();
         wpmTab.setText("0");
