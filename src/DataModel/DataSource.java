@@ -1,6 +1,5 @@
 package DataModel;
 
-import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -21,6 +20,8 @@ public class DataSource {
     private PreparedStatement insert_test_record;
     private PreparedStatement query_practice_record;
     private PreparedStatement query_test_record;
+    private PreparedStatement update_user_info;
+    private PreparedStatement query_user;
     private PreparedStatement update_user_password;
 
     private DataSource(){
@@ -43,7 +44,9 @@ public class DataSource {
             insert_test_record = connection.prepareStatement(Constant.INSERT_TEST_RECORD);
             query_practice_record = connection.prepareStatement(Constant.QUERY_GET_PRACTICE_RECORD);
             query_test_record = connection.prepareStatement(Constant.QUERY_GET_TEST_RECORD);
-            update_user_password = connection.prepareStatement(Constant.UPDATE_USER_PASSWORD);
+            update_user_info = connection.prepareStatement(Constant.UPDATE_USER_INFO);
+            query_user = connection.prepareStatement(Constant.QUERY_AUTHENTICATION_FOR_PASSWORD_CHANGE);
+            update_user_password = connection.prepareStatement(Constant.UPDATE_PASSWORD);
             return true;
         }catch (SQLException e){
             System.out.println("Couldn't connect to database "+e.getMessage());
@@ -82,6 +85,12 @@ public class DataSource {
             }
             if(query_test_record != null) {
                 query_test_record.close();
+            }
+            if(update_user_info != null) {
+                update_user_info.close();
+            }
+            if(query_user != null) {
+                query_user.close();
             }
             if(update_user_password != null) {
                 update_user_password.close();
@@ -291,18 +300,44 @@ public class DataSource {
 
     public void updateUserInfo(String name, String email, String dob, String password) {
         try {
-            update_user_password.setString(1, name);
-            update_user_password.setString(2, email);
-            update_user_password.setString(3, dob);
-            update_user_password.setString(4, password);
-            update_user_password.setInt(5, getCurrentUser().getId());
-            update_user_password.execute();
+            update_user_info.setString(1, name);
+            update_user_info.setString(2, email);
+            update_user_info.setString(3, dob);
+            update_user_info.setString(4, password);
+            update_user_info.setInt(5, getCurrentUser().getId());
+            update_user_info.execute();
         } catch (SQLException e) {
             System.out.println("Couldn't update user info " + e.getMessage());
         }
     }
 
+    public int checkUserAvailability(String name, String dob){
+        try {
+            query_user.setString(1, name);
+            query_user.setString(2, dob);
 
+            ResultSet resultSet = query_user.executeQuery();
+
+            if(resultSet.next()) {
+                return resultSet.getInt(1);
+            }
+            return 0;
+        } catch (SQLException e) {
+            System.out.println("Couldn't check user availability " + e.getMessage());
+            return 0;
+        }
+    }
+
+    public void updatePassword(String pass, int id) {
+        try {
+            update_user_password.setString(1, pass);
+            update_user_password.setInt(2, id);
+
+            update_user_password.execute();
+        } catch (SQLException e) {
+            System.out.println("Couldn't reset password" + e.getMessage());
+        }
+    }
 }
 
 

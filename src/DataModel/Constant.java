@@ -69,6 +69,12 @@ public class Constant {
     public static final String QUERY_AUTHENTICATION = "SELECT " + COLUMN_USER_ID + " FROM " + TABLE_USER + " WHERE (" +
             COLUMN_USER_NAME + " = ? OR " + COLUMN_USER_EMAIL + " = ?) AND " + COLUMN_USER_PASSWORD + " = ?";
 
+    public static final String QUERY_AUTHENTICATION_FOR_PASSWORD_CHANGE = "SELECT " + COLUMN_USER_ID + " FROM " +
+            TABLE_USER + " WHERE " + COLUMN_USER_NAME + " = ? AND " + COLUMN_USER_DOB + " = ?";
+
+    public static final String UPDATE_PASSWORD = "UPDATE " + TABLE_USER + " SET " + COLUMN_USER_PASSWORD + " = ? WHERE "
+            + COLUMN_USER_ID + " = ?";
+
     public static final String UPDATE_LOGIN_STATUS_TO_0 = "UPDATE " + TABLE_LOGIN_STATS + " SET " +
             COLUMN_LOGIN_STATS_STATUS + " = 0";
 
@@ -87,7 +93,7 @@ public class Constant {
             COLUMN_PRACTICE_RECORD_LENGTH + ", " + COLUMN_PRACTICE_RECORD_SPEED + ", " + COLUMN_PRACTICE_RECORD_ERROR +
             " FROM " + TABLE_PRACTICE_RECORD + " WHERE " + COLUMN_PRACTICE_RECORD_INDEX + " = ?";
 
-    public static final String UPDATE_USER_PASSWORD = "UPDATE " + TABLE_USER + " SET " + COLUMN_USER_NAME +
+    public static final String UPDATE_USER_INFO = "UPDATE " + TABLE_USER + " SET " + COLUMN_USER_NAME +
             " = ?, " + COLUMN_USER_EMAIL + " = ?, " + COLUMN_USER_DOB + " = ?, " + COLUMN_USER_PASSWORD +
             " = ? WHERE " + COLUMN_USER_ID + " = ?";
 
