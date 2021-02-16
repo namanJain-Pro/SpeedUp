@@ -29,7 +29,7 @@
                            </font>
                         </Label>
                         <DatePicker fx:id="forgetPassword_DOB" editable="false" layoutX="288.0" layoutY="345.0" prefHeight="30.0" prefWidth="202.0" />
-                        <TextField fx:id="forgetPassword_userNameField" onKeyTyped="#handleKeyType" layoutX="288.0" layoutY="291.0" prefHeight="30.0" prefWidth="202.0" promptText="Username" />
+                        <TextField fx:id="forgetPassword_userNameField" onKeyTyped="#handleKeyTyped" layoutX="288.0" layoutY="291.0" prefHeight="30.0" prefWidth="202.0" promptText="Username" />
                         <Label fx:id="forgetPassword_successLabel" layoutX="240.0" layoutY="394.0" textFill="#44bc2c">
                            <font>
                               <Font name="System Bold" size="21.0" />
@@ -79,7 +79,7 @@
                               <Font size="19.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="forgetPassword_newPassword" onKeyTyped="#handleKeyType" layoutX="269.0" layoutY="195.0" prefHeight="33.0" prefWidth="233.0" promptText="New Password" />
+                        <TextField fx:id="forgetPassword_newPassword" onKeyTyped="#handleKeyTyped" layoutX="269.0" layoutY="195.0" prefHeight="33.0" prefWidth="233.0" promptText="New Password" />
                         <Button layoutX="313.0" layoutY="439.0" mnemonicParsing="false" onAction="#handleCancelButton" prefHeight="44.0" prefWidth="95.0" style="-fx-background-color: #b1b5b5;" text="Cancel">
                            <font>
                               <Font name="System Bold" size="16.0" />
@@ -90,7 +90,7 @@
                               <Font name="System Bold" size="16.0" />
                            </font>
                         </Button>
-                        <PasswordField fx:id="forgetPassword_confirmPassword" onKeyTyped="#handleKeyType" layoutX="269.0" layoutY="269.0" prefHeight="33.0" prefWidth="233.0" promptText="Comfrim Password" />
+                        <PasswordField fx:id="forgetPassword_confirmPassword" onKeyTyped="#handleKeyTyped" layoutX="269.0" layoutY="269.0" prefHeight="33.0" prefWidth="233.0" promptText="Comfrim Password" />
                         <Label fx:id="forgetPassword_errorLabel" layoutX="259.0" layoutY="349.0" textFill="#18a40e">
                            <font>
                               <Font name="System Bold" size="24.0" />

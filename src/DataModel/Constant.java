@@ -5,7 +5,7 @@ import java.security.PublicKey;
 public class Constant {
 
     public static final String DB_NAME = "info.db";
-    public static final String CONNECTION_STRING = "jdbc:sqlite:/home/namanjain/Workspace/IdeaProjects/Speed Up Mini Project With Planning/src/DataFiles/"+DB_NAME;
+    public static final String CONNECTION_STRING = "jdbc:sqlite:D:\\MyData\\Workspace\\IdeaProjects\\Speed Up Mini Project With Planning\\src\\DataFiles\\"+DB_NAME;
 
     public static final String TABLE_USER = "users";
     public static final String COLUMN_USER_ID = "_id";

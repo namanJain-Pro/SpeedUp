@@ -146,7 +146,7 @@ public class TestScreenController implements ControlledScreen {
                                         end = System.nanoTime();
                                         int speed = calculation();
                                         DataSource.getInstance().updateTestRecord(difficulty, lengthOfPara, speed, wrongCharCounter, timePeriod);
-                                        test_textArea.setText("Times Up !!!");
+                                        test_textArea.setText("Time Up !!!");
                                     }
                                 }
                             }));

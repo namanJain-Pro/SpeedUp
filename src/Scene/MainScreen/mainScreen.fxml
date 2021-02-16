@@ -120,7 +120,7 @@
                   </AnchorPane>
                   <AnchorPane fx:id="statistic_anchorPane" prefHeight="500.0" prefWidth="650.0" style="-fx-background-color: #D0F4DE;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <Label layoutX="70.0" layoutY="34.0" text="Statistic" underline="true">
+                        <Label layoutX="70.0" layoutY="34.0" text="Statistics" underline="true">
                            <font>
                               <Font name="System Bold" size="48.0" />
                            </font>
