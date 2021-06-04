@@ -8,7 +8,7 @@ Uses SQLITE for database
 * User can create a account or use it as guest.
 * Registered users data is maintained and recored so they can analyze ther mistakes and improve. 
 * There are two modes for Typing
-..* Practice Mode
-..* Test Mode
+1. Practice Mode
+2. Test Mode
 * Each mode let you choose length of the text and difficulty level of the text.
 * There is a time option only in test mode.
